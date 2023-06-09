@@ -9,7 +9,7 @@ terraform {
   }
 }
 
-module "vpc_groot" {
+module "vpc" {
   source               = "../../../modules/vpc"
   vpc_name             = "groot-vpc"
   vpc_cidr             = "10.1.0.0/16"
@@ -19,3 +19,17 @@ module "vpc_groot" {
   public_subnets_names = ["groot-subnet-public-1a", "groot-subnet-public-1b"]
 }
 
+output "vpc_id" {
+  description = "ID of project VPC"
+  value       = module.vpc.vpc_id
+}
+
+output "subnetID_1a" {
+  description = "ID for the subnet 1a"
+  value = module.vpc.subnetID_1a
+}
+
+output "subnetID_1b" {
+  description = "ID for the subnet 1a"
+  value = module.vpc.subnetID_1b
+}
